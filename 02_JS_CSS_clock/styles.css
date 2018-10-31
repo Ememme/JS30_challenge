@@ -17,4 +17,8 @@ body {
   background-color: yellow;
   position: relative;
   top: 50%;
+  /*changing pivot point  */
+  transform-origin: 100%;
+  /*making it start at 12 o'clock  */
+  transform: rotate(90deg);
 }
