@@ -25,7 +25,7 @@
         const now = new Date();
         const seconds = now.getSeconds();
         console.log(seconds)
-        const secondsDegress = ((seconds / 60) * 360);
+        const secondsDegress = ((seconds / 60) * 360) + 90;
 
         secondHand.style.transform = `rotate(${secondsDegress}deg)`
       }
