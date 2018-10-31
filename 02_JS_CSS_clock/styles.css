@@ -1,0 +1,20 @@
+body {
+  background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+}
+
+.clock {
+  width: 35rem;
+  height: 35rem;
+  border: 20px solid white;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+
+.hand {
+  width: 50%;
+  height: 10px;
+  background-color: yellow;
+  position: relative;
+  top: 50%;
+}
