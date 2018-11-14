@@ -5,7 +5,7 @@
     <title>JS with CSS variables</title>
   </head>
   <body>
-    <h1>Update JS with CSS variables</h1>
+    <h1>Update CSS Variables with <span class="highlight">JS</span></h1>
 
     <div class="controls">
       <label for="spacing">Spacing:</label>
@@ -19,6 +19,11 @@
   </body>
 
   <style>
+    :root {
+      --base-color: #ffc600;
+      --spacing: 10px;
+      --blur: 5px;
+    }
 
     body {
       text-align: center;
@@ -34,5 +39,25 @@
     input {
       width: 100px;
     }
+
+    img {
+      padding: var(--spacing);
+      background: var(--base-color);
+      filter: blur(var(--blur));
+    }
+
+    .highlight {
+      color: var(--base-color);
+    }
   </style>
+  <script>
+    const inputs = document.querySelectorAll('input');
+    console.log(inputs);
+
+    function handleUpdate() {
+      console.log(this.value);
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate));
+  </script>
 </html>
