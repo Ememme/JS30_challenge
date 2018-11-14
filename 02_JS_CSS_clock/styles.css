@@ -21,4 +21,20 @@ body {
   transform-origin: 100%;
   /*making it start at 12 o'clock  */
   transform: rotate(90deg);
+  transition: all 0.5s;
+}
+
+.second-hand {
+  background-color: red;
+  height: 8px;
+}
+
+.minute-hand {
+  background-color: black;
+  height: 10px;
+}
+
+.hour-hand {
+  height: 5px;
+
 }
