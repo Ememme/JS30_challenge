@@ -43,8 +43,8 @@ This will add the required changes, but does not stop animation.
 5. To end the animation, it is possible to use setTimeOut, but not recommended.
 Instead, use transitionEvent object
 
-6. Declare variable that holds reference to all key elements and set up event listeners for them. As it is a NodeList, we must iterate through all the elements and add an event listener that will fire on the transitionend event, and a function responsible for removing the playing class.
+6. Declare variable that holds reference to all key elements and set up event listeners for them. As it is a NodeList, we must iterate through all the elements and add an event listener that will fire on the transitionend event, and a function responsible for removing the ".playing" class.
 
-This function (event handler) will fire when the transition animation completes. The event provided to the function as an argument contains a reference to the **TransitionEvent** with the CSS property's name which was transitioned into.
+Event handler fires when the transition animation completes. The event provided to the function as an argument contains a reference to the **TransitionEvent** with the CSS property's name which was transitioned into.
 Check for **transform** property, as this property defines the length of animation.
 If there is an event with a property name transform, target the function context (the HTML element to which the event listener was attached) and remove the playing class.
