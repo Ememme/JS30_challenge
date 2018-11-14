@@ -9,18 +9,18 @@
 
     <div class="controls">
       <label for="spacing">Spacing:</label>
-      <input type="range" name="spacing" min="10" max="200" value="20">
+      <input type="range" name="spacing" min="10" max="200" value="20" data-sizing="px">
       <label for="blur">Blur:</label>
-      <input type="range" name="blur" min="0" max="25" value="10">
+      <input type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
       <label for="color">Color:</label>
-      <input type="color" name="color" value="#ffc600">
+      <input type="color" name="base" value="#ffc600">
     </div>
     <img src="https://images.unsplash.com/photo-1536663815808-535e2280d2c2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a2da826b13694163d40dd88239fa78ac&auto=format&fit=crop&w=400&q=80" alt="Orange roofs of Lisbon">
   </body>
 
   <style>
     :root {
-      --base-color: #ffc600;
+      --base: #ffc600;
       --spacing: 10px;
       --blur: 5px;
     }
@@ -42,22 +42,27 @@
 
     img {
       padding: var(--spacing);
-      background: var(--base-color);
+      background: var(--base);
       filter: blur(var(--blur));
     }
 
     .highlight {
-      color: var(--base-color);
+      color: var(--base);
     }
   </style>
   <script>
     const inputs = document.querySelectorAll('input');
-    console.log(inputs);
+
+  ;
 
     function handleUpdate() {
+      const suffix = this.dataset.sizing || '';
+      console.log(suffix)
       console.log(this.value);
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix);
     }
 
     inputs.forEach(input => input.addEventListener('change', handleUpdate));
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
   </script>
 </html>
