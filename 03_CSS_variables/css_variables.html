@@ -9,12 +9,30 @@
 
     <div class="controls">
       <label for="spacing">Spacing:</label>
-      <input type="range" name="" value="">
+      <input type="range" name="spacing" min="10" max="200" value="20">
       <label for="blur">Blur:</label>
-      <input type="range" name="" value="">
+      <input type="range" name="blur" min="0" max="25" value="10">
       <label for="color">Color:</label>
-      <input type="range" name="" value="">
+      <input type="color" name="color" value="#ffc600">
     </div>
     <img src="https://images.unsplash.com/photo-1536663815808-535e2280d2c2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a2da826b13694163d40dd88239fa78ac&auto=format&fit=crop&w=400&q=80" alt="Orange roofs of Lisbon">
   </body>
+
+  <style>
+
+    body {
+      text-align: center;
+      background: #193549;
+      color: white;
+      font-family: 'helvetica neue', sans-serif;
+      font-weight: 100;
+      font-size: 50px;
+    }
+    .controls {
+      margin-bottom: 50px;
+    }
+    input {
+      width: 100px;
+    }
+  </style>
 </html>
