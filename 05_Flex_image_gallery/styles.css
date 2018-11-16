@@ -73,6 +73,26 @@ body {
   align-items: center;
 }
 
+/*taking elements off screen  */
+
+.panel>*:first-child {
+  transform: translateY(-100%);
+}
+
+.panel>*:last-child {
+  transform: translateY(100%);
+}
+
+/*animating it to appear on screen  */
+
+.panel.open-active>*:first-child {
+  transform: translateY(0);
+}
+
+.panel.open-active>*:last-child {
+  transform: translateY(0);
+}
+
 .panel p {
   text-transform: uppercase;
   font-family: 'Amatic SC', cursive;
@@ -86,4 +106,6 @@ body {
 
 .panel.open {
   font-size: 40px;
+  /*Making open panel bigger than the rest  */
+  flex: 5;
 }
