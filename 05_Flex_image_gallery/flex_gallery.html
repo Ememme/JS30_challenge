@@ -39,11 +39,20 @@
     const panels = document.querySelectorAll('.panel');
     console.log(panels);
 
-    function toggleOpen() {
+    //Opens the panel
+    function togglePanel() {
       this.classList.toggle('open');
     }
     panels.forEach(panel => panel.addEventListener('click', toggleOpen));
 
+    //Activates text transformation
+    function toggleText(e) {
+      if (e.propertyName.includes('flex')) {
+        this.classList.toggle('open-active');
+      }
+    }
+
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
 
   </script>
   </body>
