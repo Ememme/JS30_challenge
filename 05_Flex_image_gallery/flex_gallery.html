@@ -43,7 +43,7 @@
     function togglePanel() {
       this.classList.toggle('open');
     }
-    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('click', togglePanel));
 
     //Activates text transformation
     function toggleText(e) {
@@ -52,7 +52,7 @@
       }
     }
 
-    panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleText));
 
   </script>
   </body>
