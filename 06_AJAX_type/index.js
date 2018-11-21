@@ -20,15 +20,27 @@ function findMatch(searchedWord, cities) {
     })
 }
 
+const searchInput = document.getElementsByClassName('search')[0];
+const suggestions = document.querySelector('.suggestions');
 function displayMatches(){
     const matchArray = findMatch(this.value, cities);
     console.log(matchArray);
+    // hooking up matches to html element
+    const html = matchArray.map(place => {
+        return `
+        <li>
+            <span class="name">${place.city}, ${place.state}</span>
+            <span class="population">${place.population}</span>
+        </li>
+        `;
+    }).join('');
+    suggestions.innerHTML = html;
 }
-
-const searchInput = document.getElementsByClassName('search')[0];
-const suggestions = document.querySelectorAll('.suggestions')
-console.log(searchInput);
-console.log(suggestions);
+//
+// const searchInput = document.getElementsByClassName('search')[0];
+// const suggestions = document.querySelectorAll('.suggestions')
+// console.log(searchInput);
+// console.log(suggestions);
 
 searchInput.addEventListener('change', displayMatches);
 searchInput.addEventListener('keyup', displayMatches);
