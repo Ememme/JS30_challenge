@@ -24,12 +24,18 @@ const searchInput = document.getElementsByClassName('search')[0];
 const suggestions = document.querySelector('.suggestions');
 function displayMatches(){
     const matchArray = findMatch(this.value, cities);
+    // creating regex to locate searched item in string and enable highlight
+
     console.log(matchArray);
     // hooking up matches to html element
     const html = matchArray.map(place => {
+        const regex = new RegExp(this.value, 'gi');
+        const citiName = place.city.replace(regex, `<span class='hl'>${this.value}</span>`);
+        const stateName = place.state.replace(regex, `<span class='hl'>${this.value}</span>`);
+
         return `
         <li>
-            <span class="name">${place.city}, ${place.state}</span>
+            <span class="name">${citiName}, ${stateName}</span>
             <span class="population">${place.population}</span>
         </li>
         `;
