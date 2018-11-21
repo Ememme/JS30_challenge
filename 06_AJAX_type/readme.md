@@ -1,6 +1,6 @@
-#What I've learned
+# What I've learned
 
-##CSS
+## CSS
 ```outline```: CSS shorthand property for ```outline-style```, ```outline-width```, and ```outline-color```.
 Borders vs outlines:
 
@@ -16,9 +16,9 @@ The strength of the effect is determined by the value of this property.
 /* transform: perspective(100px) rotateX(3deg) translateY(2px) scale(1.001); */
 The **vanishing point** is by default placed at the center of the element, but its position can be changed using the ```perspective-origin``` property.
 
-##JS
+## JS
 
-###fetchAPI
+### fetchAPI
 
 - built-in browser feature that returns a Promise
 - it doesn't recognize the data type it returns (can be json, image, audiofile, etc), that is why in first step we call `````.json()````` method on it 
