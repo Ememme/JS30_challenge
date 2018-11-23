@@ -15,3 +15,23 @@ The scale()
  
  scale(sx, sy): allows to scale dimensions differently
  
+ 
+ ## JS
+ 
+ 
+ 
+ ### debouncing function
+ 
+- function that ensures a given task doesn't fire so often that it bricks browser performance.
+- limits the rate at which a function can fire in miliseconds 
+
+## DOMEvent: scroll
+
+``scrollY``, ``scrollX``
+- read-only properties of the Window interface 
+- returns the number of pixels that the document is currently scrolled vertically/horizontally.
+
+
+```offsetTop```
+- read-only property of the VisualViewport interface 
+- returns the offset of the top edge of the visual viewport from the top edge of the layout viewport in CSS pixels.
