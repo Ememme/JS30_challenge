@@ -24,9 +24,14 @@
     let isDrawing = false;
     let pointX = 0;
     let pointY = 0;
+    let hue = 0;
+
+
 
     function draw(event) {
         if(!isDrawing) return;
+        // Set hue, saturation, & luminosity by CSS hsl function
+        ctx.strokeStyle = `hsl(${hue}, 30%, 80%)`;
         console.log(event);
         ctx.beginPath();
         // start from
@@ -36,17 +41,23 @@
         ctx.stroke();
         // ES6 destructuring to assign ending points
         [pointX, pointY] = [event.offsetX, event.offsetY];
+
+
+        hue++;
+        if (hue >= 360) {
+            hue = 0;
+        }
     }
 
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        [pointX, pointY] = [event.offsetX, event.offsetY];
+    });
     canvas.addEventListener('mousemove', draw);
-    canvas.addEventListener('mousedown', () => isDrawing = true);
+
     canvas.addEventListener('mouseup', () => isDrawing = false);
 
-    // ctx.fillStyle = 'rgb(200, 0, 0)';
-    // ctx.fillRect(10, 10, 50, 50);
-    //
-    // ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-    // ctx.fillRect(30, 30, 50, 50);
+
 </script>
 
 <style>
