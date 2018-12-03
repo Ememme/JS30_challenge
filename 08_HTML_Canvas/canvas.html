@@ -34,6 +34,8 @@
         // go to
         ctx.lineTo(event.offsetX, event.offsetY);
         ctx.stroke();
+        // ES6 destructuring to assign ending points
+        [pointX, pointY] = [event.offsetX, event.offsetY];
     }
 
     canvas.addEventListener('mousemove', draw);
