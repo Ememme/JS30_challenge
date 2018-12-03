@@ -8,6 +8,43 @@
 <body>
 <canvas id="draw" width="800" height="800"></canvas>
 <script>
+    // Setting up canvas element and making it equal to window size
+    const canvas = document.getElementById('draw');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    // Defining canvas context
+    const ctx = canvas.getContext('2d');
+    console.log(ctx);
+    ctx.strokeStyle = 'blue';
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'miter';
+    ctx.lineWidth = 10;
+
+    // Flag to manage drawing on mousedown/mouseup
+    let isDrawing = false;
+    let pointX = 0;
+    let pointY = 0;
+
+    function draw(event) {
+        if(!isDrawing) return;
+        console.log(event);
+        ctx.beginPath();
+        // start from
+        ctx.moveTo(pointX, pointY);
+        // go to
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.stroke();
+    }
+
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mousedown', () => isDrawing = true);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+
+    // ctx.fillStyle = 'rgb(200, 0, 0)';
+    // ctx.fillRect(10, 10, 50, 50);
+    //
+    // ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+    // ctx.fillRect(30, 30, 50, 50);
 </script>
 
 <style>
