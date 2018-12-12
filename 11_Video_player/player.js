@@ -5,6 +5,7 @@ const progressBar = player.querySelector('.progress__filled');
 const playButton = player.querySelector('.toggle');
 const rewindButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
+const fullScreen = player.querySelector('.fullscreen');
 
 function togglePlay() {
    video.paused ? video.play() : video.pause()
@@ -41,6 +42,10 @@ function adjustVideo(event) {
     video.currentTime = adjustedTime;
 }
 
+function toggleFullScreen() {
+    video.requestFullscreen();
+}
+
 // Hooking up event listeners:
 // Video toggles play if video window or playButton is clicked
 video.addEventListener('click', togglePlay);
@@ -65,4 +70,9 @@ progress.addEventListener('mouseup', () => mousedown === false);
 
 // Updating range values (volume and playbackRate)
 ranges.forEach(range => range.addEventListener('change', updateRange));
+
+// Making video fullscreen
+
+fullScreen.addEventListener('click', toggleFullScreen);
+
 
