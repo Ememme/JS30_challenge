@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Key Detection</title>
     <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
 </head>
+
 <body>
+
+<h1>Konami sequence: up, up, down, down, left, right, left, rigt, a, b  </h1>
+
+
 <script>
+    let pressed = [];
+    const secretCode = 'xmas';
+    window.addEventListener('keyup', (e) => {
+        console.log(e.key);
+        pressed.push(e.key);
+        // debugger;
+        pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+        if (pressed.join('').includes(secretCode)) {
+            console.log('Secret is now in the open!');
+            cornify_add();
+        }
+        console.log(pressed);
+    //    Note: Try it on Firefox as Chrome has some issues
+    });
 </script>
 </body>
+
 </html>
