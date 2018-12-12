@@ -28,6 +28,15 @@ function updateRange() {
     video[this.name] = this.value;
 }
 
+function updateProgressBar() {
+    const percent = (video.currentTime / video.duration) * 100;
+    // progress bar is done with flex, so flexBasis 0 will show empty, 100 > filled with yellow
+    progressBar.style.flexBasis = `${percent}%`;
+    console.log(percent);
+
+}
+
+
 // Hooking up event listeners:
 // Video toggles play if video window or playButton is clicked
 video.addEventListener('click', togglePlay);
@@ -36,6 +45,7 @@ playButton.addEventListener('click', togglePlay);
 // Updating playButton whenever video is paused/started - could be done via 3rd party plugins, etc.
 video.addEventListener('play', updateButtonIcon);
 video.addEventListener('pause', updateButtonIcon);
+video.addEventListener('timeupdate', updateProgressBar);
 
 // Rewinding video
 
