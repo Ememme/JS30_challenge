@@ -51,10 +51,18 @@ video.addEventListener('play', updateButtonIcon);
 video.addEventListener('pause', updateButtonIcon);
 video.addEventListener('timeupdate', updateProgressBar);
 
-// Rewinding video
+// Rewinding video with buttons
 
 rewindButtons.forEach(button => button.addEventListener('click', rewindVideo));
+
+// Rewinnding video with progress bar
 progress.addEventListener('click', adjustVideo);
+
+let mousedown = false;
+progress.addEventListener('mousemove', (event) => mousedown && adjustVideo(event));
+progress.addEventListener('mousedown', () => mousedown === true);
+progress.addEventListener('mouseup', () => mousedown === false);
+
 // Updating range values (volume and playbackRate)
 ranges.forEach(range => range.addEventListener('change', updateRange));
 
