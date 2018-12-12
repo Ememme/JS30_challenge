@@ -35,7 +35,11 @@ function updateProgressBar() {
     console.log(percent);
 
 }
-
+// Based on the click position on progress bar, video will rewind accordingly
+function adjustVideo(event) {
+    const adjustedTime = (event.offsetX / progress.offsetWidth) * video.duration;
+    video.currentTime = adjustedTime;
+}
 
 // Hooking up event listeners:
 // Video toggles play if video window or playButton is clicked
@@ -50,6 +54,7 @@ video.addEventListener('timeupdate', updateProgressBar);
 // Rewinding video
 
 rewindButtons.forEach(button => button.addEventListener('click', rewindVideo));
-
+progress.addEventListener('click', adjustVideo);
 // Updating range values (volume and playbackRate)
 ranges.forEach(range => range.addEventListener('change', updateRange));
+
