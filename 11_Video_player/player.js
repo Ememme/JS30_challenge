@@ -43,7 +43,9 @@ function adjustVideo(event) {
 }
 
 function toggleFullScreen() {
-    video.requestFullscreen();
+    const browserPrefixes = video.requestFullscreen || video.webkitRequestFullScreen;
+    browserPrefixes.call(video);
+
 }
 
 // Hooking up event listeners:
