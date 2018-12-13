@@ -2,8 +2,8 @@
 
 ## HTML VIDEO API
 
-Embedded on website with ```<video> ```element
- Multiple sources inside nested ```<source>``` elements can be provided, and the browser will use the first one it understands.
+Embedded on website with ```<video> ```element.
+Multiple sources inside nested ```<source>``` elements can be provided, and the browser will use the first one it understands.
  
 ## Media Events:
 
@@ -14,11 +14,11 @@ Embedded on website with ```<video> ```element
 
 HTMLMediaElement Properties:
 
-``controls`` whether user interface controls for playing the media item will be displayed.
-volume
-playbackRate 
-currentTime
-duration
+- ``controls`` displays user interface controls for playing the media item
+- volume
+- playbackRate 
+- currentTime
+- duration
 
 ## dataset
 dataset property on the HTMLElement interface provides read/write access to all the custom data attributes (data-*) set on the element.
