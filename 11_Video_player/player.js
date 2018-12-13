@@ -21,7 +21,7 @@ function updateButtonIcon() {
 
 function rewindVideo() {
     console.log(this.dataset.skip);
-    video.currentTime += +this.dataset.skip;
+    video.currentTime += parseFloat(this.dataset.skip);
 }
 
 function updateRange() {
@@ -62,7 +62,7 @@ video.addEventListener('timeupdate', updateProgressBar);
 
 rewindButtons.forEach(button => button.addEventListener('click', rewindVideo));
 
-// Rewinnding video with progress bar
+// Rewinding video with progress bar
 progress.addEventListener('click', adjustVideo);
 
 let mousedown = false;
