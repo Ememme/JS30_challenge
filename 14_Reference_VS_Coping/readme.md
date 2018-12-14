@@ -1,4 +1,4 @@
-#What I've learned:
+# What I've learned:
  
  ## primitive types: manipulated by value 
  ## object type: manipulated by reference. 
@@ -48,7 +48,7 @@ cat.name = "Nie-Całka"
 console.log(cat === cat2, cat, cat2); // true {name: "Nie-Całka", age: 10} {name: "Nie-Całka", age: 10}
 ```
 
-Cat2 does not copy me - it contains a *reference to the object defined in ``const cat``*.
+Cat2 does not copy cat - it contains a *reference to the object defined in ``const cat``*.
 Any changes applied directly to the object will have an effect on all variables referencing that particular object.
 
 ## Creating a copy of an object 
