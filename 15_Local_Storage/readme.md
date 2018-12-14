@@ -26,7 +26,7 @@
    .plates input:checked + label:before {
       content: '🌮';
     }
-```
+````
 ## JS: localStorage
 
 
