@@ -1,5 +1,6 @@
 const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates');
+// on pageload browser will check if there is localStorage or fallback on []
 const items = JSON.parse(localStorage.getItem('items')) || [];
 
 
@@ -30,5 +31,26 @@ function populateList(items = [], itemsList){
 // without join there will be commas visible in HTML code
 }
 
+
+function toggleDone(event) {
+    // Check if clicked element was a checkbox
+    if (!event.target.matches('input')) return;
+    const clickedElement = event.target;
+    const index = clickedElement.dataset.index;
+
+    console.log(clickedElement.dataset.index);
+    // toggling checkbox
+    items[index].done = !items[index].done;
+    // updating storage
+    localStorage.setItem('items', JSON.stringify(items));
+    // visual update to the list
+    populateList(items, itemsList);
+}
+
+
+
 addItems.addEventListener('submit', addItem);
+itemsList.addEventListener('click', toggleDone);
 populateList(items, itemsList);
+
+// TO-DO: 3 buttons: Clear All/ CheckAll/ UncheckAll with localStorage
