@@ -1,6 +1,6 @@
 const addItems = document.querySelector('.add-items');
 const itemsList = document.querySelector('.plates');
-const items = [];
+const items = JSON.parse(localStorage.getItem('items')) || [];
 
 
 function addItem(event) {
@@ -13,6 +13,7 @@ function addItem(event) {
     };
 
     items.push(item);
+    localStorage.setItem('items', JSON.stringify(items));
     addItems.reset();
     populateList(items, itemsList);
 }
@@ -21,7 +22,7 @@ function populateList(items = [], itemsList){
     itemsList.innerHTML = items.map((item,index) => {
         return `
             <li>
-                <input type="checkbox" data-index="${index}" id="item${index}">
+                <input type="checkbox" data-index="${index}" id="item${index}" ${item.done ? 'checked': ''}>
                 <label for="item${index}">${item.description}</label>
             </li>
         `;
@@ -30,3 +31,4 @@ function populateList(items = [], itemsList){
 }
 
 addItems.addEventListener('submit', addItem);
+populateList(items, itemsList);
