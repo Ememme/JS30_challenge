@@ -65,3 +65,64 @@ The first cat object has been copied and copy can be changed without manipulatin
 
 **NOTE**: If copied object contains nested objects only the first level is being copied!!!
  Anything deeper than that will still be a reference.
+ 
+ ## Copying arrays
+ 
+ 1. with slice()
+ 
+ let arr1 = ['some data'];
+ let arr2 = arr1.slice();
+ 
+ ```
+let arr1 = ['some data'];
+ let arr2 = arr1.slice();
+undefined
+arr1;
+["some data"]
+arr2;
+["some data"]
+arr1[1] = "Hi";
+"Hi"
+arr1;
+(2) ["some data", "Hi"]
+arr2;
+["some data"]
+```
+
+ if no argument is provided to slice, it will return the copy of an array it is called on
+ 
+ 2. with concat();
+ 
+ let arr3 = [].concat(arr1);
+ 
+ 3. ES6-way with spread:
+ 
+ let arr4 = [...arr1];
+ 
+ 4. Array.from()
+ 
+ let arr5 = Array.from(arr1);
+ 
+ 
+ ## Copying objects: Object.assign({}, object_to_be_copied, {newKey: newValue);
+ 
+ ```
+ const cat = {
+    name: 'Calka',
+    age: 10
+ }
+ 
+ cat;
+ {name: "Calka", age: 10}
+ const cat2 = Object.assign({}, cat);
+ undefined
+ cat2;
+ {name: "Calka", age: 10}
+ cat2.name = "Boruc"
+ "Boruc"
+ cat;
+ {name: "Calka", age: 10}
+ cat2;
+ {name: "Boruc", age: 10}
+ ```
+ 
