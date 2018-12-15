@@ -45,12 +45,17 @@
 <script>
     const bands = ['The Plot in You', 'The Devil Wears Prada', 'Pierce the Veil', 'Norma Jean', 'The Bled', 'Say Anything', 'The Midway State', 'We Came as Romans', 'Counterparts', 'Oh, Sleeper', 'A Skylit Drive', 'Anywhere But Here', 'An Old Dog'];
 
-    function sortedBands() {
-       const sorted = bands.sort((a, b) => a > b ? 1 : -1 );
-        console.table(bands, sorted);
-    }
+    const omitArticles = new RegExp('^(a |the |an )', 'i'); //^ = starts with; i = case-insensitive;
 
-    sortedBands();
+    function eliminateArticle(bandName) {
+        return bandName.replace(omitArticles, '').trim();
+    }
+    const sortedBands = bands.sort((a, b) => eliminateArticle(a) > eliminateArticle(b) ? 1 : -1 );
+
+    document.querySelector('#bands').innerHTML =
+        sortedBands
+            .map(band => `<li>${band}</li>`)
+            .join('');
 
 </script>
 </body>
