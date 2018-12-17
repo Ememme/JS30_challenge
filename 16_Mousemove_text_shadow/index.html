@@ -13,6 +13,7 @@
         justify-content: center;
         align-items: center;
         color: #e2e0db;
+
     }
     h1 {
         text-shadow: 10px 10px 0 rgba(0,0,0,1);
@@ -27,7 +28,52 @@
 </div>
 
 <script>
+    const wrapper = document.querySelector('#hero');
+    const text = wrapper.querySelector('h1');
+    const walk = 300;  // 300px
 
+
+    function shadow(event) {
+
+        // Get the width & height properties of the 'hero' div in relation to the window object
+        const wrapperWidth = wrapper.offsetWidth;
+        const wrapperHeight = wrapper.offsetHeight;
+
+        // console.log('This', this, event.target, event.currentTarget); //this: div #hero, event.target: H1
+
+        // Using ES6 object deconstruction
+        let { offsetX: x, offsetY: y } = event;
+
+        // Without ES6 object deconstruction
+        // let x = e.offsetX, y = e.offsetY;
+
+
+        // If mouse is hovering over an element different than the event's target element...
+        if (event.currentTarget !== event.target) {
+            // Increment the x & y coordinates by the distance between the element and the event's target
+            // element on the x & y axis.
+            x = x + event.target.offsetLeft;
+            y = y + event.target.offsetTop;
+        }
+
+        console.log(x, y);
+
+        // Calculate the stretch distance for the element's shadow on the x & y axis
+        const xWalk = Math.round((x / wrapperWidth * walk) - (walk / 2));
+        const yWalk = Math.round((y /wrapperHeight* walk) - (walk / 2));
+        console.log(xWalk, yWalk);
+
+        // Update the textShadow style property of the h1 element:
+
+        text.style.textShadow = `
+          ${xWalk}px ${yWalk}px 0 rgba(255, 0, 255, 0.7),
+          ${xWalk * -1}px ${yWalk}px 0 rgba(0, 255, 255, 0.6),
+          ${yWalk}px ${xWalk * -1}px 0 rgba(0, 255, 0, 0.5),
+          ${yWalk * -1}px ${xWalk}px 0 rgba(0, 0, 255, 0.4)
+        `;
+    }
+
+    wrapper.addEventListener('mousemove', shadow);
 </script>
 </body>
 </html>
