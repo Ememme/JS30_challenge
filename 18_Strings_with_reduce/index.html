@@ -182,6 +182,25 @@
     </li>
 </ul>
 <script>
+
+    // Selecting all elements with a property [data-time] returns a nodeList, therefore to do any further operation it must be converted to an array.
+    const timeArray = Array.from(document.querySelectorAll('[data-time]'));
+    console.log(timeArray);
+
+    const times = timeArray
+    // finding time in <li> - returns string
+            .map(element => element.dataset.time)
+            // splitting string
+            .map(timeCode => {
+                const [minutes, seconds ] = timeCode.split(':').map(parseFloat);
+                console.log(typeof(minutes));
+                console.log(minutes, seconds);
+                return [minutes, seconds];
+            });
+
+
+
+    console.log(times);
 </script>
 </body>
 </html>
