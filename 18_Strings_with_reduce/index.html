@@ -187,7 +187,7 @@
     const timeArray = Array.from(document.querySelectorAll('[data-time]'));
     console.log(timeArray);
 
-    const times = timeArray
+    const totalSecconds = timeArray
     // finding time in <li> - returns string
             .map(element => element.dataset.time)
             // splitting string
@@ -202,7 +202,24 @@
 
 
 
-    console.log(times);
+    console.log(totalSecconds);
+
+    let remainingSeconds = totalSecconds;
+
+    let hours = Math.floor(remainingSeconds / 3600);
+    console.log(hours);
+
+    remainingSeconds = remainingSeconds % 3600;
+    console.log(remainingSeconds);
+
+    let minutes = Math.floor(remainingSeconds / 60);
+    remainingSeconds = remainingSeconds % 60;
+
+    const totalVideoTime = `${hours}:${minutes}:${remainingSeconds}`;
+    console.log(totalVideoTime);
+
+
+
 </script>
 </body>
 </html>
