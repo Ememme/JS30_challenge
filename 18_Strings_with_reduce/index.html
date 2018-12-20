@@ -193,10 +193,12 @@
             // splitting string
             .map(timeCode => {
                 const [minutes, seconds ] = timeCode.split(':').map(parseFloat);
-                console.log(typeof(minutes));
                 console.log(minutes, seconds);
-                return [minutes, seconds];
-            });
+                // add minutes and seconds for each video // array
+                return (minutes * 60) + seconds
+            })
+            // summing up total video time
+            .reduce((total, vidSeconds) => total + vidSeconds);
 
 
 
