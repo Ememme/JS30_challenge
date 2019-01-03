@@ -25,17 +25,30 @@ function getVideo() {
 
 function videoToCanvas() {
     const width = video.videoWidth;
-    console.log(width);
     const height = video.videoHeight;
-  canvas.width = width;
-  canvas.height = height;
+    canvas.width = width;
+    canvas.height = height;
     
 
     return setInterval(() => {
         ctx.drawImage(video, 0, 0, width, height);
-    }, 16); 
+    }, 16);
 }
 
-videoToCanvas();
+function takePhoto() {
+    // playing sound when photo is taken
+    snap.currentTime = 0;
+    snap.play();
+    // taking still from video
 
+    const data = canvas.toDataURL('image/jpeg');
+    console.log(data);
+    const link = document.createElement('a');
+    link.href = data;
+    link.setAttribute('download', 'image');
+    strip.insertBefore(link, strip.firstChild);
+}
 getVideo();
+
+// On page load: listen for video ready and putting its content on canvas
+video.addEventListener('canplay', videoToCanvas);
