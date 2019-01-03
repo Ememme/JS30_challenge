@@ -46,6 +46,7 @@ function takePhoto() {
     const link = document.createElement('a');
     link.href = data;
     link.setAttribute('download', 'image');
+    link.innerHTML = `<img src=${data}>`;
     strip.insertBefore(link, strip.firstChild);
 }
 getVideo();
