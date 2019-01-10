@@ -34,7 +34,7 @@
 
     const highlight = document.createElement('span');
     highlight.classList.add('highlight');
-    document.body.append(highlight);
+    document.body.appendChild(highlight);
 
     // Initially 'invisible' because there is no width or height, but it can be seen in source
 
@@ -43,11 +43,21 @@
         const linkCoordinates = this.getBoundingClientRect();
         console.log(linkCoordinates);
         // returns an object = > DOMRect {x: 414.078125, y: 100, width: 52.6875, height: 28, top: 100, …}
+        const coordinates = {
+            width: linkCoordinates.width,
+            height: linkCoordinates.height,
+            // account for offset caused by vertical or horizontal scrolling
+            top: linkCoordinates.top + window.scrollY,
+            left: linkCoordinates.left + window.scrollX
+        }
 
-        highlight.style.width = `${linkCoordinates.width}px`;
-        highlight.style.height = `${linkCoordinates.height}px`;
-        highlight.style.transform = `translate(${linkCoordinates.left}px, ${linkCoordinates.top}px)`
+        console.log(coordinates);
+        highlight.style.width = `${coordinates.width}px`;
+        highlight.style.height = `${coordinates.height}px`;
+        highlight.style.transform = `translate(${coordinates.left}px, ${coordinates.top}px)`
     }
+
+    // Triger highlightLink function on mouse enter
     allLinks.forEach(a => a.addEventListener('mouseenter', highlightLink));
   </script>
 </body>
