@@ -27,6 +27,28 @@
 
   <script>
     // 👀👀👀👀👀👀👀👀👀👀👀👀👀👀👀
+    const allLinks = document.querySelectorAll('a'); //nodeList
+    console.log(allLinks);
+
+    // Creating highlight element and inserting it into the DOM
+
+    const highlight = document.createElement('span');
+    highlight.classList.add('highlight');
+    document.body.append(highlight);
+
+    // Initially 'invisible' because there is no width or height, but it can be seen in source
+
+    function highlightLink() {
+        console.log(this, "Highlight me says a link!");
+        const linkCoordinates = this.getBoundingClientRect();
+        console.log(linkCoordinates);
+        // returns an object = > DOMRect {x: 414.078125, y: 100, width: 52.6875, height: 28, top: 100, …}
+
+        highlight.style.width = `${linkCoordinates.width}px`;
+        highlight.style.height = `${linkCoordinates.height}px`;
+        highlight.style.transform = `translate(${linkCoordinates.left}px, ${linkCoordinates.top}px)`
+    }
+    allLinks.forEach(a => a.addEventListener('mouseenter', highlightLink));
   </script>
 </body>
 </html>
