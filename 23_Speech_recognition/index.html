@@ -50,8 +50,16 @@
 
         
         function setVoice() {
+            // looping over voices array to find a matching speechSynthesisVoice object
             msg.voice = voices.find(voice => voice.name === this.value);
             console.log("Changing voice:", this.value);
+            restartVoice();
+        }
+
+        function restartVoice() {
+            // native methods on speechSynthesis
+            speechSynthesis.cancel();
+            speechSynthesis.speak(msg);
         }
         
         // populating dropdown
