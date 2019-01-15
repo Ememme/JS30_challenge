@@ -56,16 +56,28 @@
             restartVoice();
         }
 
-        function restartVoice() {
+        function restartVoice(startOver = true) {
             // native methods on speechSynthesis
             speechSynthesis.cancel();
-            speechSynthesis.speak(msg);
+
+            if (startOver) {
+                speechSynthesis.speak(msg);
+            }
+            
+        }
+
+        function setOption() {
+            console.log(this.name, this.value);
+            msg[this.name] = this.value;
+            restartVoice();
         }
         
         // populating dropdown
         speechSynthesis.addEventListener('voiceschanged', populateVoices);
         // setting voice based on a selection from dropdown list
         voicesDropdown.addEventListener('change', setVoice);
+        // setting values for option
+        options.forEach(option =>  option.addEventListener('change', setOption));
 
 
 
