@@ -78,6 +78,10 @@
         voicesDropdown.addEventListener('change', setVoice);
         // setting values for option
         options.forEach(option =>  option.addEventListener('change', setOption));
+        // speak on click
+        startButton.addEventListener('click', restartVoice);
+        // stop speaking on click
+        stopButton.addEventListener('click', () => restartVoice(false));
 
 
 
