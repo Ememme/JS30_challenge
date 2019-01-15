@@ -24,6 +24,41 @@
         <button id="start">Start</button>
     </div>
     <script>
+        const voicesDropdown = document.querySelector('[name="voice"]');
+        const options = document.querySelectorAll('[type="range"], [name="text"]');
+        const stopButton = document.getElementById('stop');
+        const startButton = document.getElementById('start');
+        console.log(stopButton, startButton, voicesDropdown, options);
+        
+
+        const msg = new SpeechSynthesisUtterance();
+        let voices = [];
+        msg.text = document.querySelector('[name="text"]').value;
+        console.log(msg);
+
+        // getting array of available voices
+        function populateVoices() {
+            if(typeof speechSynthesis === 'undefined') {
+                return;
+            }
+
+            voices = speechSynthesis.getVoices();
+            voicesDropdown.innerHTML = voices.map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`);
+            console.log(voices)
+        
+        }
+
+        
+        function setVoice() {
+            msg.voice = voices.find(voice => voice.name === this.value);
+            console.log("Changing voice:", this.value);
+        }
+        
+        // populating dropdown
+        speechSynthesis.addEventListener('voiceschanged', populateVoices);
+        // setting voice based on a selection from dropdown list
+        voicesDropdown.addEventListener('change', setVoice);
+
 
 
     </script>
