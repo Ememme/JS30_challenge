@@ -43,7 +43,9 @@
             }
 
             voices = speechSynthesis.getVoices();
-            voicesDropdown.innerHTML = voices.map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`);
+            voicesDropdown.innerHTML = voices
+                .filter(voice => voice.lang.includes('en'))
+                .map(voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`);
             console.log(voices)
         
         }
