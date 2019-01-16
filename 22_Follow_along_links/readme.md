@@ -10,6 +10,15 @@ Properties other than width and height are relative to the top-left of the viewp
 
 To account for current position, add the current scrolling position to the top and left properties (window.scrollX and window.scrollY)
 
+Read more: https://www.bennadel.com/blog/3441-translating-viewport-coordinates-into-element-local-coordinates-using-element-getboundingclientrect.htm
+
 ## translate()
 
 Instead of defining directly the top and left properties, we used ``tranalate()`` to achieve a smoother animation effect. 
+The  CSS translate()function repositions an element in the horizontal and/or vertical directions. 
+
+``translate()`` is specified as either one or two values.
+
+1. translate(tx)
+
+2. translate(tx, ty)
