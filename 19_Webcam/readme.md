@@ -32,7 +32,15 @@ The browser can play the media, but estimates that not enough data has been load
 The first frame of the media has finished loading.
 
 ### Base64
-Base64 is a group of similar binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. Base64 encoding schemes are commonly used when there is a need to encode binary data that needs to be stored and transferred over media that are designed to deal with textual data. This is to ensure that the data remain intact without modification during transport. Base64 is commonly used in a number of applications including email via MIME, and storing complex data in XML.
+Base64 is a group of binary-to-text encoding schemes that represent binary data in an ASCII string format by translating it into a radix-64 representation. Base64 encoding schemes are commonly used when there is a need to encode binary data that needs to be stored and transferred over media that are designed to deal with textual data. This is to ensure that the data remain intact without modification during transport. Base64 is commonly used in a number of applications including email via MIME, and storing complex data in XML.
 
+Base64 was first suggested as an encoding stream for MIME data in an email rather than HTTP.
 
+How does it work?
+A byte consist of 8 bits. When encoding, Base64 will divide the string of bytes into groups of 6 bits and each group will map to one of 64 characters. These 64 characters are the in the Base64 character table.
 
+If the string of bytes cannot be divided into exact number of groups of 6 bits, padding will be involved so that the padded string will be groups of 24 bits and then the encoding will be applied to the padded string. If a group of 6 bits is fully padded(doesn't contain any bit from original bit), it will be mapped to "=" in the encoded string.
+
+Since Base64 uses a character to represent 6 bits of data, so the size of Base64 encoded data will be 33% larger than the original data. 
+
+Source: https://www.pixelstech.net/article/1457585550-How-does-Base64-work
