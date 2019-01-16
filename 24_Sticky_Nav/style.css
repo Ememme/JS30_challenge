@@ -73,9 +73,11 @@ html {
   }
 
   li.logo {
+    /* initial hidden position */
     max-width: 0;
     overflow: hidden;
     background: white;
+    /* animation for when nav fixed */
     transition: all .5s;
     font-weight: 600;
     font-size: 30px;
@@ -85,6 +87,9 @@ html {
     color: black;
   }
 
+  .fixed-nav li.logo {
+    max-width: 500px;
+  }
   nav a {
     text-decoration: none;
     padding: 20px;
