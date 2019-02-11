@@ -7,8 +7,11 @@
 <body>
   <h2>Cool</h2>
   <nav class="top">
+      <!-- This part follows along the li elements - one common background not 3 different ones  -->
     <div class="dropdownBackground">
-      <span class="arrow"></span>
+            <!-- This is the /\ element -->
+
+        <span class="arrow"></span>
     </div>
 
     <ul class="cool">
@@ -141,7 +144,7 @@
     will-change: opacity;
     display: none;
   }
-
+  /* Two separate classes to achieve 'animated' effect  */
   .trigger-enter .dropdown {
     display: block;
   }
@@ -220,6 +223,28 @@
 </style>
 
 <script>
+    const listTriggers = document.querySelectorAll('.cool > li')
+    console.log(listTriggers);
+    const background = document.querySelector('.dropdownBackground');
+    const nav = document.querySelector('nav');
+    console.log(nav);
+
+
+    function handleEnter() {
+        console.log("Enterd")
+        this.classList.add('trigger-enter');
+        // In ES6 - arrow function this is inherited from the 'parent function';
+        setTimeout(() => this.classList.add('trigger-enter-active'), 150)
+    }
+
+    function handleLeave() {
+        console.log("left")
+    }
+
+    listTriggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
+    listTriggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
+
+
 </script>
 
 </body>
