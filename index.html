@@ -234,7 +234,7 @@
         console.log("Enterd")
         this.classList.add('trigger-enter');
         // In ES6 - arrow function this is inherited from the 'parent function';
-        setTimeout(() => this.classList.add('trigger-enter-active'), 150);
+        setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150);
         background.classList.add('open');
         // Dynamic selection of the dropdown that is hovered over
         const dropdownItem = this.querySelector('.dropdown');
@@ -248,13 +248,17 @@
           width: dropdownItemCoords.width,
           height: dropdownItemCoords.height,
           top: dropdownItemCoords.top - navCoords.top,
-          left: dropdownItemCoords.left
+          left: dropdownItemCoords.left - navCoords.left
         }
         // Template literals used to incorporate px - without measurement it does not work
         background.style.setProperty('width', `${coords.width}px`);
         background.style.setProperty('height', `${coords.height}px`);
-        background.style.setProperty('top', `${coords.top}px`);
-        background.style.setProperty('left', `${coords.left}px`);
+       
+        // Version with slight animation - background adjust to content
+        background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
+        // Version with no animation
+        // background.style.setProperty('left', `${coords.left}px`);
+        // background.style.setProperty('top', `${coords.top}px`);
     }
 
     function handleLeave() {
