@@ -246,11 +246,15 @@
 
         const coords = {
           width: dropdownItemCoords.width,
-          height: dropdownItemCoords.height
+          height: dropdownItemCoords.height,
+          top: dropdownItemCoords.top - navCoords.top,
+          left: dropdownItemCoords.left
         }
-
+        // Template literals used to incorporate px - without measurement it does not work
         background.style.setProperty('width', `${coords.width}px`);
         background.style.setProperty('height', `${coords.height}px`);
+        background.style.setProperty('top', `${coords.top}px`);
+        background.style.setProperty('left', `${coords.left}px`);
     }
 
     function handleLeave() {
