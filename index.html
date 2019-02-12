@@ -234,11 +234,28 @@
         console.log("Enterd")
         this.classList.add('trigger-enter');
         // In ES6 - arrow function this is inherited from the 'parent function';
-        setTimeout(() => this.classList.add('trigger-enter-active'), 150)
+        setTimeout(() => this.classList.add('trigger-enter-active'), 150);
+        background.classList.add('open');
+        // Dynamic selection of the dropdown that is hovered over
+        const dropdownItem = this.querySelector('.dropdown');
+        console.log(dropdownItem);
+        // getting relative position of dropdown element that is why nav position is needed
+        const dropdownItemCoords = dropdownItem.getBoundingClientRect();
+        console.log(dropdownItemCoords);
+        const navCoords = nav.getBoundingClientRect();
+
+        const coords = {
+          width: dropdownItemCoords.width,
+          height: dropdownItemCoords.height
+        }
+
+        background.style.setProperty('width', `${coords.width}px`);
+        background.style.setProperty('height', `${coords.height}px`);
     }
 
     function handleLeave() {
         this.classList.remove('trigger-enter', 'trigger-enter-active');
+        background.classList.remove('open');
     }
 
     listTriggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
