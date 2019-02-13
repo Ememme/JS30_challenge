@@ -68,7 +68,8 @@
 
     const x = e.pageX - slider.offsetLeft;
     console.log({x, startX});
-    const differenceInPosition = x - startX;
+    // For every pixel, slide x 5
+    const differenceInPosition = (x - startX) * 5;
     slider.scrollLeft = scrollLeft - differenceInPosition;
   })
 </script>
