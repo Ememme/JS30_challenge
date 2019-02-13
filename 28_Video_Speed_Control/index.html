@@ -19,7 +19,21 @@
         const speedWrapper = document.querySelector('.speed');
         const speedbar = speedWrapper.querySelector('.speed-bar');
         const video = document.querySelector('.flex');
-        console.log({speedWrapper, speedbar})
+        // console.log({speedWrapper, speedbar})
+
+        function handleMove(e) {
+            console.log(e)
+            // Getting position on page and accomodate offsets
+            const y = e.pageY - this.offsetTop;
+            
+            const percent = y / this.offsetHeight;
+            const min = 0.4
+            const max = 4;
+            const filledHeight = Math.round(percent * 100) + '%';
+            console.log({y, percent, filledHeight})
+            speedbar.style.height = filledHeight;
+        }
+        speedWrapper.addEventListener('mousemove', handleMove);
 
     </script>
 </body>
