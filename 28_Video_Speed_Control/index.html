@@ -32,6 +32,12 @@
             const filledHeight = Math.round(percent * 100) + '%';
             console.log({y, percent, filledHeight})
             speedbar.style.height = filledHeight;
+            // calculate playback rate
+            const playbackRate = (percent * (max - min) + min);
+            console.log(playbackRate);
+            // update video playback and text info 
+            speedbar.textContent = playbackRate.toFixed(2) + 'x';
+            video.playbackRate = playbackRate;
         }
         speedWrapper.addEventListener('mousemove', handleMove);
 
