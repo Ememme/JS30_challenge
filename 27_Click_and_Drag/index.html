@@ -69,7 +69,7 @@
     const x = e.pageX - slider.offsetLeft;
     console.log({x, startX});
     const differenceInPosition = x - startX;
-    slider.scrollLeft = differenceInPosition;
+    slider.scrollLeft = scrollLeft - differenceInPosition;
   })
 </script>
 
