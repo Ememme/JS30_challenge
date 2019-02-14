@@ -34,8 +34,9 @@ function displayTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secondsRemaining = seconds % 60;
 
-    const display = `${minutes}: ${secondsRemaining < 10 ? '0': ''}${secondsRemaining}`;
+    const display = `${minutes}:${secondsRemaining < 10 ?'0':''}${secondsRemaining}`;
     timerDisplay.textContent = display;
+    document.title = display;
 
     console.log({minutes, secondsRemaining});
 }
