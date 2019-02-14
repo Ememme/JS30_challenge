@@ -6,6 +6,8 @@ console.log(buttons);
 
 
 function timer(seconds) {
+    // Clear preexisting timers
+    clearInterval(countdown)
     // Get time value from when the count should start
     // Time object is represented in milliseconds so account for that
 
