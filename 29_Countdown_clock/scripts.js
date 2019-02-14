@@ -20,6 +20,7 @@ function timer(seconds) {
 
         if(secondsLeft < 0) {
             clearInterval(countdown);
+            return;
         }
         displayTime(secondsLeft);
     }, 1000);
