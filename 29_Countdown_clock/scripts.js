@@ -27,5 +27,11 @@ function timer(seconds) {
 }
 
 function displayTime(seconds) {
-    console.log(seconds)
+    
+    // convert seconds to minutes & seconds for display
+
+    const minutes = Math.floor(seconds / 60);
+    const secondsRemaining = seconds % 60;
+
+    console.log({minutes, secondsRemaining});
 }
