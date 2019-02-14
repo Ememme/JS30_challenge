@@ -2,7 +2,6 @@ let countdown;
 const timerDisplay = document.querySelector('.display__time-left');
 const endTimeDisplay = document.querySelector('.display__end-time');
 const buttons = document.querySelectorAll('[data-time]');
-console.log(buttons);
 
 
 function timer(seconds) {
