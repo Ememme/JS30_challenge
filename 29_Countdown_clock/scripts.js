@@ -1,18 +1,15 @@
-
 let countdown;
 const timerDisplay = document.querySelector('.display__time-left');
+const endTimeDisplay = document.querySelector('.display__end-time');
 
 
 function timer(seconds) {
     // Get time value from when the count should start
-    // ! Time object is represented in milliseconds so account for that
+    // Time object is represented in milliseconds so account for that
 
     const startTime = Date.now();
-    console.log(startTime);
-
     const endTime = startTime + seconds * 1000;
-
-    console.log({startTime, endTime});
+    displayEndTime(endTime)
     // displayTime used to show the initial value of seconds, as setInterval causes 1s delay in showing the value
     displayTime(seconds);
 
@@ -27,16 +24,19 @@ function timer(seconds) {
     }, 1000);
 }
 
-function displayTime(seconds) {
-    
+function displayTime(seconds) {  
     // convert seconds to minutes & seconds for display
-
     const minutes = Math.floor(seconds / 60);
     const secondsRemaining = seconds % 60;
-
     const display = `${minutes}:${secondsRemaining < 10 ?'0':''}${secondsRemaining}`;
+   
     timerDisplay.textContent = display;
     document.title = display;
+}
 
-    console.log({minutes, secondsRemaining});
+function displayEndTime(timestamp) {
+    const end = new Date(timestamp);
+    const minutes = end.getMinutes()
+    const hour = end.getHours();
+    endTimeDisplay.textContent = `Be back at ${hour}:${minutes}`
 }
