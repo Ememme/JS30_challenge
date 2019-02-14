@@ -54,3 +54,12 @@ function startTimer(){
     const setTime = parseInt(this.dataset.time);
     timer(setTime);
 }
+
+document.customForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const timeToSet = this.minutes.value;
+    timer(timeToSet * 60);
+    // clear form
+    this.reset()
+});
+
