@@ -36,6 +36,20 @@
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
+
+  // Game: lasts 10 secs, mole appears in a random hole and is shown for a random amount of time.
+  // Aim is to click on the mole and win points
+
+  // Function to randomly calculate time
+  function randomTime(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  // Finding random hole based on DOM (NodeList)
+  function randomHole(holes) {
+    const holeIndex = Math.floor(Math.random() * holes.length);
+    console.log(holeIndex);
+  }
 </script>
 </body>
 </html>
