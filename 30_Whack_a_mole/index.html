@@ -82,7 +82,11 @@
 
   function bonkMole(e) {
     console.log(e);
+    // prevent simulatedClicks
+    if(!e.isTrusted) return;
     score ++;
+    // console.log(this)
+    this.classList.remove('up');
     scoreBoard.textContent = score;
 
 
@@ -93,6 +97,8 @@
     // reset score and timer
     scoreBoard.textContent = 0;
     timeUp = false;
+    score = 0;
+
     showMole();
     setTimeout(()=> timeUp = true, 10000)
   }
