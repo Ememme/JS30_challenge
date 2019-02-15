@@ -38,6 +38,7 @@
   const moles = document.querySelectorAll('.mole');
   let lastHole;
   let timeUp = false;
+  let score = 0;
 
   // Game: lasts 10 secs, mole appears in a random hole and is shown for a random amount of time.
   // Aim is to click on the mole and win points
@@ -79,8 +80,17 @@
     }, showTime)  
   }
 
+  function bonkMole(e) {
+    console.log(e);
+    score ++;
+    scoreBoard.textContent = score;
+
+
+  }
+
+  moles.forEach(mole => mole.addEventListener('click', bonkMole));
   function startGame() {
-    // reset score
+    // reset score and timer
     scoreBoard.textContent = 0;
     timeUp = false;
     showMole();
