@@ -68,6 +68,8 @@
     console.log({showTime, molePosition});
 
     molePosition.classList.add('up');
+
+    setTimeout(()=> {molePosition.classList.remove('up');}, showTime)
   }
 </script>
 </body>
