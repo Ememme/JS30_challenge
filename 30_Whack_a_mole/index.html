@@ -53,12 +53,21 @@
     
     // Reducing probability of frequent (1 to 6) occurence of the same hole
     if(hole === lastHole) {
-      // console.log("Same hole chosen");
+      console.log("Same hole chosen");
       return randomHole(holes);
     } else {
       return hole;
     }
     lastHole = hole;
+  }
+
+  function showMole() {
+    const showTime = randomTime(200, 1000);
+    const molePosition = randomHole(holes);
+
+    console.log({showTime, molePosition});
+
+    molePosition.classList.add('up');
   }
 </script>
 </body>
